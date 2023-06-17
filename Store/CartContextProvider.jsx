@@ -5,9 +5,14 @@ export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
     const [shoes, setShoes] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
         fetchCartItems();
+    }, [shoes]);
+
+    useEffect(() => {
+        calculateTotalPrice();
     }, [shoes]);
 
     const fetchCartItems = async () => {
@@ -28,8 +33,13 @@ const CartContextProvider = ({ children }) => {
         }
     };
 
+    const calculateTotalPrice = () => {
+        const totalPrice = shoes.reduce((acc, shoe) => acc + (shoe.price * shoe.quantity), 0);
+        setTotalPrice(totalPrice);
+    };
+
     return (
-        <CartContext.Provider value={{ shoes, addToCart }}>
+        <CartContext.Provider value={{ shoes, addToCart, totalPrice }}>
             {children}
         </CartContext.Provider>
     );

@@ -23,6 +23,10 @@ const Cart = () => {
                     </div>
                 })
             }
+
+            <div className='bg-zinc-900 text-white text-3xl p-6'>
+                <p>Total Price : {cartCtx.totalPrice}</p>
+            </div>
         </div>
     )
 }
