@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Home from './pages/Home'
+import Home from './pages/Home.jsx'
+import Cart from './pages/Cart.jsx'
 import CartContextProvider from './Store/CartContextProvider'
-import CartItems from './components/cartItems'
 
 const App = () => {
     return (
@@ -12,7 +12,7 @@ const App = () => {
                 <Navbar />
                 <Routes>
                     <Route path='/' element={<Home />} />
-                    <Route path='/cart' element={<CartItems />} />
+                    <Route path='/cart' element={<Cart />} />
                 </Routes>
             </BrowserRouter>
         </CartContextProvider>
